@@ -86,7 +86,35 @@
 - Giải mã bằng HTML:
 <p align="center"> <img width="581" height="480" alt="Ảnh chụp màn hình 2025-09-26 165709" src="https://github.com/user-attachments/assets/70f09301-b5b7-4e94-ab54-fd6700a15b91" /> </p>
 
-
+## 5. Playfair
+### Tên: Playfair cipher
+### Thuật toán:
+- Tạo bảng 5×5 (matrix) từ khóa K:
+  - Viết các chữ cái của K (loại bỏ ký tự lặp) theo thứ tự, chuyển J → I (quy ước thông dụng) để được 25 chữ cá
+  - Điền các chữ cái còn thiếu theo thứ tự A → Z (bỏ J) vào bảng 5×5
+- Chuẩn bị plaintext:
+  - Loại bỏ ký tự không phải chữ, đổi J→I
+  - Chia thành cặp (digraphs). Nếu trong một cặp hai chữ cái giống nhau thì chèn X (hoặc Q) ở giữa; nếu cuối cùng còn 1 chữ cái lẻ thì thêm X để hoàn thành cặp
+- Luật mã hoá cho cặp (A,B):
+  - Nếu A và B cùng hàng: thay bằng ký tự ngay bên phải (wrap qua trái-> phải)
+  - Nếu cùng cột: thay bằng ký tự ngay phía dưới (wrap)
+  - Nếu khác hàng và cột: thay bằng hai chữ cái tạo thành góc chữ nhật (A -> chữ cùng hàng A nhưng cột B; B -> chữ cùng hàng B nhưng cột A)
+- Giải mã: làm ngược lại (trừ đi 1 vị trí thay vì cộng 1 trong quy tắc hàng/cột)
+### Không gian khóa:
+- Về mặt lý thuyết, số cách sắp 25 chữ cái trong ô 5×5 = 25! ≈ 1.55 × 10^25 — rất lớn
+- Nhưng thực tế khóa thường là từ/chuỗi ngắn, tạo nên một phần của không gian đó
+- Vì vậy, keyspace thực tế phụ thuộc vào cách người dùng chọn khóa (từ, cụm từ, v.v.)
+### Cách phá:
+- Không thể brute-force toàn bộ 25! — quá lớn. Thay vì đó:
+  - Phân tích digraph frequency: Playfair thay đổi tần suất đơn chữ cái nhưng digraphs (cặp) vẫn có phân bố; so sánh digraph tần suất với mẫu ngôn ngữ (English/Vietnamese) có thể giúp
+  - Kỹ thuật heuristic (hill-climbing, simulated annealing, genetic algorithms): dùng score theo log-likelihood của ngôn ngữ (quadgrams/ngram) để tìm dần ma trận tốt nhất. Cách này thực tế và hiệu quả với Playfair
+  - Known-plaintext / crib: nếu có đoạn plaintext biết (một từ/đoạn), có thể thử lồng đặt crib và suy ra bảng
+  - Tấn công bằng bảng tra cứu digraph: xây dựng bảng digraph phổ biến (ví dụ TH, HE, IN...) và dùng để hướng dẫn hoán đổi ma trận
+- Quy trình tấn công (heuristic):
+- - Khởi tạo bảng 5×5 ngẫu nhiên (hoặc bắt đầu từ khóa dự đoán)
+  - Dùng thuật toán hill-climbing: hoán đổi hai chữ cái trong bảng, giải mã ciphertext bằng bảng đó, tính score (dựa trên quadgram/ngram). Nếu score cải thiện, giữ thay đổi; lặp nhiều lần (có thể dùng simulated annealing để tránh local optimum)
+  - Sau nhiều lần lặp, bảng với score cao nhất có thể cho plaintext gần đúng
+- Gợi ý thực tế: với ciphertext dài (>200 ký tự) thuật toán heuristic thường phục hồi plaintext tốt; với ciphertext ngắn, khó khăn hơn
 
 
 
