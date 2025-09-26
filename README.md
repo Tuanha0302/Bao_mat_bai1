@@ -76,6 +76,17 @@
   - Với từng m candidate: chia ciphertext thành m chuỗi; cho mỗi chuỗi áp dụng phân tích tần suất (so sánh với tần suất chuẩn) để tìm shift tối ưu → suy ra khóa
   - Dùng đánh giá ngôn ngữ (n-gram scoring) để chọn khóa tốt nhất
 - Lưu ý: nếu khóa rất dài hoặc giống chuỗi ngẫu nhiên (one-time pad), tấn công trở nên không khả thi
+### Mã hóa & giải mã
+- Mã hóa bằng code C++:
+<p align="center"> <img width="679" height="301" alt="Ảnh chụp màn hình 2025-09-26 170435" src="https://github.com/user-attachments/assets/e4763c20-d0de-4b2f-b5d1-8ca380dbf584" /> </p>
+- Giải mã bằng code C++:
+<p align="center"> <img width="683" height="314" alt="Ảnh chụp màn hình 2025-09-26 170502" src="https://github.com/user-attachments/assets/0bfe113d-fbdc-417c-8cdf-d2cbb4f99466" /> </p>
+- Mã hóa bằng HTML:
+<p align="center"> <img width="581" height="478" alt="Ảnh chụp màn hình 2025-09-26 165657" src="https://github.com/user-attachments/assets/e1c8a25d-55f5-43a3-8d46-b78342a3fa9d" /> </p>
+- Giải mã bằng HTML:
+<p align="center"> <img width="581" height="480" alt="Ảnh chụp màn hình 2025-09-26 165709" src="https://github.com/user-attachments/assets/70f09301-b5b7-4e94-ab54-fd6700a15b91" /> </p>
+
+
 
 
 
