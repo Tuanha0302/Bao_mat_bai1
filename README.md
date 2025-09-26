@@ -55,6 +55,23 @@
 - Giải mã bằng HTML:
 <p align="center"> <img width="578" height="543" alt="Ảnh chụp màn hình 2025-09-26 161125" src="https://github.com/user-attachments/assets/57487dd6-a4c8-40ec-8dbf-269d8a9081b8" /> </p>
 
+## 3. Hoán vị khối 
+### Tên: Block Permutation Cipher (mã hoán vị khối), còn gọi là permutation cipher theo khối
+### Thuật toán:
+- Khóa: một hoán vị số K = [k₁, k₂, …, k_m] (độ dài khóa = m), mỗi k_j ∈ {1..m} và không trùng nhau
+- Mã hoá:
+  - Chia plaintext thành các block liên tiếp độ dài m. Nếu block cuối thiếu ký tự thì thêm padding “X”
+  - Với mỗi block B = [b₁,…,b_m], tạo block mã C = [c₁,…,c_m] theo quy tắc: c[j]=b[k[j]]
+  - Ghép các block lại để được ciphertext
+- Giải mã: dùng hoán vị ngược lại, phục hồi từng block ban đầu rồi ghép nối. Nếu có padding thì bỏ các ký tự “X” ở cuối
+- Ví dụ:
+  - Plaintext: HELLO
+  - Khóa: K = (3,1,2) (nghĩa là vị trí 1 của block mã lấy ký tự ở vị trí 3 của block gốc, vị trí 2 lấy từ 1, vị trí 3 lấy từ 2)
+  - Chia block: “HEL”, “LOX” (thêm X cho đủ 3 ký tự)
+  - Mã hóa:
+    - “HEL” → “LHE”
+    - “LOX” → “XLO”
+
 ## 4. Vigenère
 ### Tên: Vigenère cipher
 ### Thuật toán:
