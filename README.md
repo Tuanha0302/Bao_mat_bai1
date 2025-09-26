@@ -111,10 +111,27 @@
   - Known-plaintext / crib: nếu có đoạn plaintext biết (một từ/đoạn), có thể thử lồng đặt crib và suy ra bảng
   - Tấn công bằng bảng tra cứu digraph: xây dựng bảng digraph phổ biến (ví dụ TH, HE, IN...) và dùng để hướng dẫn hoán đổi ma trận
 - Quy trình tấn công (heuristic):
-- - Khởi tạo bảng 5×5 ngẫu nhiên (hoặc bắt đầu từ khóa dự đoán)
+  - Khởi tạo bảng 5×5 ngẫu nhiên (hoặc bắt đầu từ khóa dự đoán)
   - Dùng thuật toán hill-climbing: hoán đổi hai chữ cái trong bảng, giải mã ciphertext bằng bảng đó, tính score (dựa trên quadgram/ngram). Nếu score cải thiện, giữ thay đổi; lặp nhiều lần (có thể dùng simulated annealing để tránh local optimum)
   - Sau nhiều lần lặp, bảng với score cao nhất có thể cho plaintext gần đúng
 - Gợi ý thực tế: với ciphertext dài (>200 ký tự) thuật toán heuristic thường phục hồi plaintext tốt; với ciphertext ngắn, khó khăn hơn
+### Mã hóa & giải mã
+- Mã hóa bằng code C++:
+<p align="center"> <img width="654" height="308" alt="Ảnh chụp màn hình 2025-09-26 172152" src="https://github.com/user-attachments/assets/6ec931a8-f002-4f89-a47c-bc4be65e1791" /> </p>
+- Giải mã bằng code C++:
+<p align="center"> <img width="682" height="296" alt="Ảnh chụp màn hình 2025-09-26 172221" src="https://github.com/user-attachments/assets/694b6839-ff3e-49fe-8740-d6e28d299284" /> </p>
+- Mã hóa bằng HTML:
+<p align="center"> <img width="573" height="471" alt="Ảnh chụp màn hình 2025-09-26 172117" src="https://github.com/user-attachments/assets/5a6feebc-eab7-4eef-bf26-2f14962c3c8e" /> </p>
+- Giải mã bằng HTML:
+<p align="center"> <img width="576" height="474" alt="Ảnh chụp màn hình 2025-09-26 172130" src="https://github.com/user-attachments/assets/9d380fb5-b4f2-47e3-b57b-ff2b84eabd5e" /> </p>
+
+- Ghi chứ: Trong Playfair Cipher, khi mã hoá người ta phải chèn thêm chữ X để:
+  - Làm cho số ký tự chẵn (vì Playfair luôn mã hoá theo cặp 2 chữ)
+  - Tránh trường hợp có 2 ký tự giống nhau liền kề
+
+
+
+
 
 
 
