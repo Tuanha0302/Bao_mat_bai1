@@ -1,5 +1,5 @@
 # Bài 1: Tìm hiểu các phương pháp mã hóa cổ điển
-## 1. caesar
+## 1. Caesar
 ### Tên: Caesar cipher (mã Caesar)
 ### Thuật toán: 
 - Bảng chữ cái: A..Z (26 chữ)
@@ -18,3 +18,37 @@
   - Lấy ciphertext
   - Với mỗi k từ 1..25, dịch ngược và tạo candidate plaintext
   - Dùng nhận diện ngôn ngữ (kiểm tra từ khoá tiếng Việt/tiếng Anh, tỷ lệ chữ cái hợp lệ) để chọn bản đúng
+### Mã hóa
+- Bằng Code C++:
+<p align="center"><img width="695" height="312" alt="Ảnh chụp màn hình 2025-09-26 153343" src="https://github.com/user-attachments/assets/1e9d1655-4811-4bde-94f3-4862d926c486" /> </p>
+- Bằng HTML:
+<p align="center"> <img width="579" height="472" alt="Ảnh chụp màn hình 2025-09-26 155005" src="https://github.com/user-attachments/assets/1edc5e6c-0fce-4480-b84b-a40ac7b5dea9" />
+</p>
+
+### Giải mã
+- Bằng HTML:
+<p align="center"> <img width="576" height="473" alt="Ảnh chụp màn hình 2025-09-26 155155" src="https://github.com/user-attachments/assets/9e4d4342-f819-499f-b2d8-bb640085a213" /> </p>
+
+## 2. Affine
+### Tên: Affine cipher (mã tuyến tính-affine)
+### Thuât toán:
+- Mã hoá sử dụng hai tham số (a, b) với a phải nguyên tố cùng nhau với 26 (gcd(a,26)=1)
+- Với chữ được ánh xạ thành số x ∈ {0..25}:
+  - Mã hoá: E(x) = (a * x + b) mod 26
+  - Giải mã: D(y) = a^{-1} * (y - b) mod 26, trong đó a^{-1} là nghịch đảo modulo 26 (số a_inv sao cho a * a_inv ≡ 1 (mod 26))
+- Ví dụ: a=5, b=8 → E(x) = (5x+8) mod 26
+### Không gian khóa:
+- a có thể chọn từ tập các số coprime với 26: {1,3,5,7,9,11,15,17,19,21,23,25} — 12 khả năng
+- b có 26 giá trị (0..25)
+- Tổng số khóa = 12 × 26 = 312
+### Cách phá:
+- Brute-force (thử mọi (a,b)): chỉ 312 khả năng → dễ dò
+  - Thực hiện: lặp mọi a trong 12 giá trị, mỗi b trong 0..25, giải mã và kiểm tra plaintext hợp lý
+- Phân tích tần suất: Affine là ánh xạ tuyến tính — tần suất chữ cái biến đổi dựa trên affine; nếu có lượng lớn dữ liệu, phân tích tần suất có thể giúp tìm a và b
+- Quy trình tấn công (brute-force):
+  - Lấy ciphertext
+  - Với mỗi a trong tập hợp cho phép, hãy tính a_inv. Với mỗi b trong 0..25: tính ứng viên văn bản thuần túy a_inv*(yb) mod 26
+  - Kiểm tra bằng từ điển/ngôn ngữ, chọn candidate hợp lý
+
+
+
