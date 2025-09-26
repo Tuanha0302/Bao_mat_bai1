@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mã hoá Playfair</title>
+  <style>
+    body {font-family: Arial; background:#f5f6fa; display:flex; justify-content:center; align-items:center; height:100vh;}
+    .container {background:white; padding:30px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:400px; text-align:center;}
+    textarea,input{width:100%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:8px; font-size:16px;}
+    .buttons{display:flex; justify-content:space-between; margin-top:10px;}
+    button{flex:1; margin:0 5px; padding:10px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background:#e0e0e0; transition:0.2s;}
+    button:hover{background:#d0d0d0;}
+    #result{margin-top:15px; padding:12px; background:#f1f2f6; border-radius:8px; font-size:18px; min-height:30px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mã hoá Playfair</h2>
+    <textarea id="text" placeholder="Nhập văn bản..."></textarea>
+    <input type="text" id="key" placeholder="Khóa (chuỗi ký tự)" />
+    <div class="buttons">
+      <button onclick="encrypt()">Mã hoá</button>
+      <button onclick="decrypt()">Giải mã</button>
+    </div>
+    <div id="result"></div>
+  </div>
+
+<script>
+function createMatrix(key){
+  key=key.toLowerCase().replace(/j/g,'i').replace(/[^a-z]/g,'');
+  let matrix="",used={};
+  for(let c of key){ if(!used[c]){matrix+=c; used[c]=true;} }
+  for(let c of "abcdefghijklmnopqrstuvwxyz"){ if(c!='j' && !used[c]){matrix+=c;} }
+  return matrix;
+}
+
+function findPos(matrix,ch){
+  ch=ch=='j'?'i':ch;
+  let i=matrix.indexOf(ch);
+  return [Math.floor(i/5),i%5];
+}
+
+function playfairProcess(text,key,mode){
+  let matrix=createMatrix(key);
+  text=text.toLowerCase().replace(/j/g,'i').replace(/[^a-z]/g,'');
+  let pairs=[];
+  for(let i=0;i<text.length;i++){
+    let a=text[i],b=text[i+1];
+    if(!b || a==b){pairs.push([a,'x']);} else {pairs.push([a,b]); i++;}
+  }
+  let res="";
+  for(let [a,b] of pairs){
+    let [ra,ca]=findPos(matrix,a), [rb,cb]=findPos(matrix,b);
+    if(ra==rb){ // cùng hàng
+      if(mode=="enc"){res+=matrix[ra*5+(ca+1)%5]+matrix[rb*5+(cb+1)%5];}
+      else{res+=matrix[ra*5+(ca+4)%5]+matrix[rb*5+(cb+4)%5];}
+    }else if(ca==cb){ // cùng cột
+      if(mode=="enc"){res+=matrix[((ra+1)%5)*5+ca]+matrix[((rb+1)%5)*5+cb];}
+      else{res+=matrix[((ra+4)%5)*5+ca]+matrix[((rb+4)%5)*5+cb];}
+    }else{ // hình chữ nhật
+      res+=matrix[ra*5+cb]+matrix[rb*5+ca];
+    }
+  }
+  return res.toUpperCase();
+}
+
+function encrypt(){document.getElementById("result").innerText=playfairProcess(document.getElementById("text").value,document.getElementById("key").value,"enc");}
+function decrypt(){document.getElementById("result").innerText=playfairProcess(document.getElementById("text").value,document.getElementById("key").value,"dec");}
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mã hoá Caesar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    button {
+      flex: 1;
+      margin: 0 5px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #e0e0e0;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #d0d0d0;
+    }
+    #result {
+      margin-top: 15px;
+      padding: 12px;
+      background: #f1f2f6;
+      border-radius: 8px;
+      font-size: 18px;
+      min-height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mã hoá Caesar</h2>
+    <textarea id="text" placeholder="Nhập văn bản..."></textarea>
+    <input type="number" id="key" placeholder="Khóa k (0-25)" />
+    <div class="buttons">
+      <button onclick="encrypt()">Mã hoá</button>
+      <button onclick="decrypt()">Giải mã</button>
+    </div>
+    <div id="result"></div>
+  </div>
+
+<script>
+function caesar(text, shift) {
+  return text.split('').map(ch => {
+    if (/[a-z]/.test(ch)) {
+      return String.fromCharCode((ch.charCodeAt(0) - 97 + shift + 26) % 26 + 97);
+    } else if (/[A-Z]/.test(ch)) {
+      return String.fromCharCode((ch.charCodeAt(0) - 65 + shift + 26) % 26 + 65);
+    } else {
+      return ch;
+    }
+  }).join('');
+}
+
+function encrypt() {
+  let text = document.getElementById("text").value;
+  let key = parseInt(document.getElementById("key").value);
+  document.getElementById("result").innerText = caesar(text, key);
+}
+
+function decrypt() {
+  let text = document.getElementById("text").value;
+  let key = parseInt(document.getElementById("key").value);
+  document.getElementById("result").innerText = caesar(text, -key);
+}
+</script>
+</body>
+</html>

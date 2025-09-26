@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mã hoá Hoán vị</title>
+  <style>
+    body {font-family: Arial; background:#f5f6fa; display:flex; justify-content:center; align-items:center; height:100vh;}
+    .container {background:white; padding:30px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:400px; text-align:center;}
+    textarea,input{width:100%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:8px; font-size:16px;}
+    .buttons{display:flex; justify-content:space-between; margin-top:10px;}
+    button{flex:1; margin:0 5px; padding:10px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background:#e0e0e0; transition:0.2s;}
+    button:hover{background:#d0d0d0;}
+    #result{margin-top:15px; padding:12px; background:#f1f2f6; border-radius:8px; font-size:18px; min-height:30px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mã hoá Hoán vị</h2>
+    <textarea id="text" placeholder="Nhập văn bản..."></textarea>
+    <input type="text" id="key" placeholder="Khóa hoán vị" />
+    <div class="buttons">
+      <button onclick="encrypt()">Mã hoá</button>
+      <button onclick="decrypt()">Giải mã</button>
+    </div>
+    <div id="result"></div>
+  </div>
+
+<script>
+function permEncrypt(text,key){
+  let k = key.split(',').map(Number);
+  let m = k.length;
+  while(text.length % m !== 0) text += "X"; // padding
+  let res = "";
+  for(let i=0;i<text.length;i+=m){
+    let block = text.slice(i,i+m).split('');
+    let newBlock = [];
+    for(let j=0;j<m;j++){ 
+      newBlock[j] = block[k[j]-1] || ''; // Áp dụng hoán vị
+    }
+    res += newBlock.join('');
+  }
+  return res;
+}
+
+function permDecrypt(text,key){
+  let k = key.split(',').map(Number);
+  let m = k.length;
+  let res = "";
+  for(let i=0;i<text.length;i+=m){
+    let block = text.slice(i,i+m).split('');
+    let newBlock = [];
+    for(let j=0;j<m;j++){ 
+      newBlock[k[j]-1] = block[j] || ''; // Đảo ngược hoán vị
+    }
+    res += newBlock.join('');
+  }
+  return res.replace(/X+$/g,""); // bỏ padding
+}
+
+function encrypt(){
+  document.getElementById("result").innerText =
+    permEncrypt(document.getElementById("text").value, document.getElementById("key").value);
+}
+
+function decrypt(){
+  document.getElementById("result").innerText =
+    permDecrypt(document.getElementById("text").value, document.getElementById("key").value);
+}
+</script>
+</body>
+</html>

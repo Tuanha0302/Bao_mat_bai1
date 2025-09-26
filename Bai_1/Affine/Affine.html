@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mã hoá Affine</title>
+  <style>
+    body {font-family: Arial; background: #f5f6fa; display:flex; justify-content:center; align-items:center; height:100vh;}
+    .container {background:white; padding:30px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); width:400px; text-align:center;}
+    textarea,input{width:100%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:8px; font-size:16px;}
+    .buttons{display:flex; justify-content:space-between; margin-top:10px;}
+    button{flex:1; margin:0 5px; padding:10px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background:#e0e0e0; transition:0.2s;}
+    button:hover{background:#d0d0d0;}
+    #result{margin-top:15px; padding:12px; background:#f1f2f6; border-radius:8px; font-size:18px; min-height:30px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mã hoá Affine</h2>
+    <textarea id="text" placeholder="Nhập văn bản..."></textarea>
+    <input type="number" id="a" placeholder="Khóa a (nguyên tố cùng 26)" />
+    <input type="number" id="b" placeholder="Khóa b" />
+    <div class="buttons">
+      <button onclick="encrypt()">Mã hoá</button>
+      <button onclick="decrypt()">Giải mã</button>
+    </div>
+    <div id="result"></div>
+  </div>
+
+<script>
+function gcd(a,b){return b==0?a:gcd(b,a%b);}
+function modInverse(a,m){for(let x=1;x<m;x++){if((a*x)%m==1) return x;} return 1;}
+
+function affineEncrypt(text,a,b){
+  return text.split('').map(ch=>{
+    if(/[A-Z]/.test(ch)){
+      return String.fromCharCode(((a*(ch.charCodeAt(0)-65)+b)%26)+65);
+    }else if(/[a-z]/.test(ch)){
+      return String.fromCharCode(((a*(ch.charCodeAt(0)-97)+b)%26)+97);
+    }else return ch;
+  }).join('');
+}
+
+function affineDecrypt(text,a,b){
+  let a_inv = modInverse(a,26);
+  return text.split('').map(ch=>{
+    if(/[A-Z]/.test(ch)){
+      return String.fromCharCode(((a_inv*(ch.charCodeAt(0)-65-b+26))%26)+65);
+    }else if(/[a-z]/.test(ch)){
+      return String.fromCharCode(((a_inv*(ch.charCodeAt(0)-97-b+26))%26)+97);
+    }else return ch;
+  }).join('');
+}
+
+function encrypt(){
+  let text=document.getElementById("text").value;
+  let a=parseInt(document.getElementById("a").value);
+  let b=parseInt(document.getElementById("b").value);
+  if(gcd(a,26)!=1){alert("a phải nguyên tố cùng nhau với 26!"); return;}
+  document.getElementById("result").innerText=affineEncrypt(text,a,b);
+}
+
+function decrypt(){
+  let text=document.getElementById("text").value;
+  let a=parseInt(document.getElementById("a").value);
+  let b=parseInt(document.getElementById("b").value);
+  if(gcd(a,26)!=1){alert("a phải nguyên tố cùng nhau với 26!"); return;}
+  document.getElementById("result").innerText=affineDecrypt(text,a,b);
+}
+</script>
+</body>
+</html>
