@@ -71,6 +71,29 @@
   - Mã hóa:
     - “HEL” → “LHE”
     - “LOX” → “XLO”
+      
+    → Ciphertext = LHEXLO
+    - Giải mã: từ “LHEXLO” với khóa (3,1,2) thu được lại HELLO
+### Không gian khóa:
+- Với độ dài m, số khóa = m! (giai thừa)
+- Ví dụ: m=3 → 6 khóa; m=5 → 120 khóa; m=10 → 3,628,800 khóa
+- Không gian tăng rất nhanh khi m lớn, giúp tăng độ an toàn
+### Cách phá:
+- Brute-force: thử toàn bộ m! khóa, phù hợp khi m nhỏ (≤6)
+- Ước lượng m: dựa vào độ dài ciphertext hoặc độ lặp mẫu để đoán kích thước block
+- Phân tích tần suất và n-gram: các ký tự vẫn giữ nguyên tần suất, chỉ bị tráo chỗ, nên có thể đánh giá candidate plaintext bằng điểm số ngôn ngữ
+- Heuristic: sử dụng hill-climbing hoặc simulated annealing để tìm dần hoán vị gần đúng
+- Known-plaintext: nếu có đoạn bản rõ đã biết, dễ dàng suy ra một phần hoặc toàn bộ khóa
+### Mã hóa & giải mã
+- Mã hóa bằng code C++:
+<p align="center"> <img width="691" height="310" alt="Ảnh chụp màn hình 2025-09-26 180333" src="https://github.com/user-attachments/assets/bb323d54-1482-4596-a483-2bc02238544c" /> </p>
+- Giải mã bằng code C++:
+<p align="center"> <img width="693" height="333" alt="Ảnh chụp màn hình 2025-09-26 180358" src="https://github.com/user-attachments/assets/79f57963-e886-4af3-a78c-66aec5963c4e" /> </p>
+- Mã hóa bằng HTML:
+<p align="center"> <img width="578" height="469" alt="Ảnh chụp màn hình 2025-09-26 180408" src="https://github.com/user-attachments/assets/fbe942c1-92ce-4c00-a395-18bb2c3a92b5" /> </p>
+- Giải mã bằng HTML:
+<p align="center"> <img width="572" height="471" alt="Ảnh chụp màn hình 2025-09-26 180432" src="https://github.com/user-attachments/assets/5edef365-71c5-42f9-9aca-1bea7f543ff1" /> </p>
+
 
 ## 4. Vigenère
 ### Tên: Vigenère cipher
