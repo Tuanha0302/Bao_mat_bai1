@@ -55,6 +55,28 @@
 - Giải mã bằng HTML:
 <p align="center"> <img width="578" height="543" alt="Ảnh chụp màn hình 2025-09-26 161125" src="https://github.com/user-attachments/assets/57487dd6-a4c8-40ec-8dbf-269d8a9081b8" /> </p>
 
+## 4. Vigenère
+### Tên: Vigenère cipher
+### Thuật toán:
+- Khóa: chuỗi ký tự K độ dài m
+- Quy tắc (với chữ cái 0..25):
+  - Mã hoá: E_i = (P_i + K_{i mod m}) mod 26 (ở đây K_j là số 0..25 ứng với ký tự khóa)
+  - Giải mã: P_i = (E_i - K_{i mod m} + 26) mod 26
+- Vigenère có thể coi là xâu các Caesar cipher nối tiếp nhau, mỗi vị trí dịch theo ký tự khóa
+### Không gian khóa:
+- Nếu khóa độ dài m và mỗi ký tự có 26 khả năng → tổng 26^m khóa
+  - Ví dụ: m=3 → 17,576; m=6 → ~308 triệu; m=10 → ~1.4e14
+- Vì thế không gian tăng theo m; tuy nhiên, nếu khóa là từ có nghĩa thì không gian thực tế nhỏ hơn
+### Cách phá:
+- Kasiski Examination (Kasiski test): tìm các đoạn trùng lặp trong ciphertext và đo khoảng cách giữa các lần xuất hiện; gcd của các khoảng cách có thể cho độ dài khóa m
+- Friedman Test (Index of Coincidence — IC): dùng IC để ước lượng độ dài khóa; IC cao (≈0.066 cho tiếng Anh) gợi ý văn bản không bị phân mảnh; IC thấp (≈0.038) là ngẫu nhiên; tính IC cho các phân lớp (chia ciphertext theo vị trí mod m) để ước lượng m
+- Sau khi biết m: chia ciphertext thành m chuỗi (mỗi chuỗi chứa ký tự ở cùng offset mod m). Mỗi chuỗi là Caesar cipher — thực hiện phân tích tần suất để tìm dịch chuyển (k) cho mỗi chuỗi
+- Quy trình tấn công (tóm tắt):
+  - Dùng Kasiski hoặc Friedman để ước lượng các giá trị khả dĩ của m
+  - Với từng m candidate: chia ciphertext thành m chuỗi; cho mỗi chuỗi áp dụng phân tích tần suất (so sánh với tần suất chuẩn) để tìm shift tối ưu → suy ra khóa
+  - Dùng đánh giá ngôn ngữ (n-gram scoring) để chọn khóa tốt nhất
+- Lưu ý: nếu khóa rất dài hoặc giống chuỗi ngẫu nhiên (one-time pad), tấn công trở nên không khả thi
+
 
 
 
