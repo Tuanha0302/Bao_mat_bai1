@@ -21,10 +21,10 @@
 ### Mã hóa & giải mã
 - Bằng Code C++:
 <p align="center"><img width="695" height="312" alt="Ảnh chụp màn hình 2025-09-26 153343" src="https://github.com/user-attachments/assets/1e9d1655-4811-4bde-94f3-4862d926c486" /> </p>
-- Mã hóa bằng HTML:
+- Mã hóa bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="579" height="472" alt="Ảnh chụp màn hình 2025-09-26 155005" src="https://github.com/user-attachments/assets/1edc5e6c-0fce-4480-b84b-a40ac7b5dea9" />
 </p>
-- Giải mã bằng HTML:
+- Giải mã bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="576" height="473" alt="Ảnh chụp màn hình 2025-09-26 155155" src="https://github.com/user-attachments/assets/9e4d4342-f819-499f-b2d8-bb640085a213" /> </p>
 
 ## 2. Affine
@@ -50,9 +50,9 @@
 ### Mã hóa & giải mã
 - Bằng code C++:
 <p align="center"> <img width="689" height="315" alt="Ảnh chụp màn hình 2025-09-26 160224" src="https://github.com/user-attachments/assets/0e3c8f23-40f1-43e4-827e-84437dc1c331" /> </p>
-- Mã hóa bằng HTML : 
+- Mã hóa bằng HTML + CSS + JavaScript: 
 <p align="center"> <img width="574" height="540" alt="Ảnh chụp màn hình 2025-09-26 160854" src="https://github.com/user-attachments/assets/23404b31-fd81-4ee4-a7b6-b8d730cc4c61" /> </p>
-- Giải mã bằng HTML:
+- Giải mã bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="578" height="543" alt="Ảnh chụp màn hình 2025-09-26 161125" src="https://github.com/user-attachments/assets/57487dd6-a4c8-40ec-8dbf-269d8a9081b8" /> </p>
 
 ## 3. Hoán vị khối 
@@ -89,9 +89,9 @@
 <p align="center"> <img width="691" height="310" alt="Ảnh chụp màn hình 2025-09-26 180333" src="https://github.com/user-attachments/assets/bb323d54-1482-4596-a483-2bc02238544c" /> </p>
 - Giải mã bằng code C++:
 <p align="center"> <img width="693" height="333" alt="Ảnh chụp màn hình 2025-09-26 180358" src="https://github.com/user-attachments/assets/79f57963-e886-4af3-a78c-66aec5963c4e" /> </p>
-- Mã hóa bằng HTML:
+- Mã hóa bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="578" height="469" alt="Ảnh chụp màn hình 2025-09-26 180408" src="https://github.com/user-attachments/assets/fbe942c1-92ce-4c00-a395-18bb2c3a92b5" /> </p>
-- Giải mã bằng HTML:
+- Giải mã bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="572" height="471" alt="Ảnh chụp màn hình 2025-09-26 180432" src="https://github.com/user-attachments/assets/5edef365-71c5-42f9-9aca-1bea7f543ff1" /> </p>
 
 
@@ -121,9 +121,9 @@
 <p align="center"> <img width="679" height="301" alt="Ảnh chụp màn hình 2025-09-26 170435" src="https://github.com/user-attachments/assets/e4763c20-d0de-4b2f-b5d1-8ca380dbf584" /> </p>
 - Giải mã bằng code C++:
 <p align="center"> <img width="683" height="314" alt="Ảnh chụp màn hình 2025-09-26 170502" src="https://github.com/user-attachments/assets/0bfe113d-fbdc-417c-8cdf-d2cbb4f99466" /> </p>
-- Mã hóa bằng HTML:
+- Mã hóa bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="581" height="478" alt="Ảnh chụp màn hình 2025-09-26 165657" src="https://github.com/user-attachments/assets/e1c8a25d-55f5-43a3-8d46-b78342a3fa9d" /> </p>
-- Giải mã bằng HTML:
+- Giải mã bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="581" height="480" alt="Ảnh chụp màn hình 2025-09-26 165709" src="https://github.com/user-attachments/assets/70f09301-b5b7-4e94-ab54-fd6700a15b91" /> </p>
 
 ## 5. Playfair
@@ -160,9 +160,9 @@
 <p align="center"> <img width="654" height="308" alt="Ảnh chụp màn hình 2025-09-26 172152" src="https://github.com/user-attachments/assets/6ec931a8-f002-4f89-a47c-bc4be65e1791" /> </p>
 - Giải mã bằng code C++:
 <p align="center"> <img width="682" height="296" alt="Ảnh chụp màn hình 2025-09-26 172221" src="https://github.com/user-attachments/assets/694b6839-ff3e-49fe-8740-d6e28d299284" /> </p>
-- Mã hóa bằng HTML:
+- Mã hóa bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="573" height="471" alt="Ảnh chụp màn hình 2025-09-26 172117" src="https://github.com/user-attachments/assets/5a6feebc-eab7-4eef-bf26-2f14962c3c8e" /> </p>
-- Giải mã bằng HTML:
+- Giải mã bằng HTML + CSS + JavaScript:
 <p align="center"> <img width="576" height="474" alt="Ảnh chụp màn hình 2025-09-26 172130" src="https://github.com/user-attachments/assets/9d380fb5-b4f2-47e3-b57b-ff2b84eabd5e" /> </p>
 
 - Ghi chứ: Trong Playfair Cipher, khi mã hoá người ta phải chèn thêm chữ X để:
