@@ -1,4 +1,16 @@
 # Bài 1: Tìm hiểu các phương pháp mã hóa cổ điển
+## Đề bài: Tìm hiểu các phương pháp mã hóa cổ điển
+- Caesar
+- Affine
+- Hoán vị
+- Vigenère
+- Playfair
+### Với mỗi phương pháp, cần tìm hiểu:
+1. Tên gọi
+2. Thuật toán mã hoá, thuật toán giải mã
+3. Không gian khoá
+4. Cách phá mã (mã không cần khoá)
+5. Cài đặt thuật toán mã hoá và giải mã bằng code C++ và bằng HTML + CSS + JavaScript
 ## 1. Caesar
 ### Tên: Caesar cipher (mã Caesar)
 ### Thuật toán: 
